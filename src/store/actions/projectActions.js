@@ -1,4 +1,4 @@
-export const createProject = (project) => (dispatch) => {
+export const createProject = (project) => (dispatch, getState) => {
 
  //make async call
  return dispatch({
