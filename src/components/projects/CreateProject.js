@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-
-export default class CreateProject extends Component {
+import { createProject } from "../../store/actions/projectActions";
+import { connect } from "react-redux";
+class CreateProject extends Component {
   state = {
     title: "",
     content: ""
@@ -16,12 +17,13 @@ export default class CreateProject extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+    this.props.createProject(this.state);
   };
   render() {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3"> Create a Project</h5>
+          <h5 className="grey-text text-darken-3"> Create a Project </h5>{" "}
           <div className="input-field">
             <label htmlFor="title"> Title </label>{" "}
             <input
@@ -30,7 +32,7 @@ export default class CreateProject extends Component {
               id="title"
               onChange={this.handleChange}
             />{" "}
-          </div>
+          </div>{" "}
           <div className="input-field">
             <label htmlFor="content"> Project Content </label>{" "}
             <textarea
@@ -38,7 +40,7 @@ export default class CreateProject extends Component {
               name="content"
               id="content"
               onChange={this.handleChange}
-            />
+            />{" "}
           </div>{" "}
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0"> Create </button>{" "}
@@ -48,3 +50,14 @@ export default class CreateProject extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createProject: project => dispatch(createProject(project))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateProject);

@@ -18,7 +18,14 @@ const INIT_STATE = {
 };
 const projectReducer = (state = INIT_STATE, action) => {
 
- return state;
+ switch (action.type) {
+  case 'ADD_PROJECT':
+   return console.log('created project', action.project);
+
+  default:
+   return state;
+ }
+
 
 }
 
