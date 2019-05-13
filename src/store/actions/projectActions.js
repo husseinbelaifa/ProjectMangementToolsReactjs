@@ -1,3 +1,7 @@
+import {
+ auth
+} from "firebase";
+
 export const createProject = (project) => (dispatch, getState, {
  getFirebase,
  getFirestore
