@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { createProject } from "../../store/actions/projectActions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+
 class CreateProject extends Component {
   state = {
     title: "",
@@ -19,6 +20,7 @@ class CreateProject extends Component {
     e.preventDefault();
     console.log(this.state);
     this.props.createProject(this.state);
+    this.props.history.push("/");
   };
   render() {
     if (!this.props.auth.uid) return <Redirect to="/signin" />;
